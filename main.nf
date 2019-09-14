@@ -105,9 +105,10 @@ params.bed12 = params.genome ? params.genomes[ params.genome ].bed12 ?: false : 
 params.hisat2_index = params.genome ? params.genomes[ params.genome ].hisat2 ?: false : false
 
 
-ch_mdsplot_header = Channel.fromPath("$baseDir/assets/mdsplot_header.txt")
-ch_heatmap_header = Channel.fromPath("$baseDir/assets/heatmap_header.txt")
-ch_biotypes_header = Channel.fromPath("$baseDir/assets/biotypes_header.txt")
+ch_mdsplot_header = Channel.fromPath("https://github.com/PhilPalmer/rnaseq/raw/master/assets/mdsplot_header.txt")
+ch_heatmap_header = Channel.fromPath("https://github.com/PhilPalmer/rnaseq/raw/master/assets/heatmap_header.txt")
+ch_biotypes_header = Channel.fromPath("https://github.com/PhilPalmer/rnaseq/raw/master/assets/biotypes_header.txt")
+
 
 // Define regular variables so that they can be overwritten
 clip_r1 = params.clip_r1
