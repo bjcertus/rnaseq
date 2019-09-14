@@ -227,11 +227,9 @@ if(params.readPaths){
             .into { raw_reads_fastqc; raw_reads_trimgalore }
     }
 } else {
-    reads_files = "${params.reads_folder}/${params.reads_prefix}.${params.reads_extension}"
     Channel
-        // .fromFilePairs( params.reads, size: params.singleEnd ? 1 : 2 )
-        .fromFilePairs( reads_files, size: params.singleEnd ? 1 : 2 )
-        .ifEmpty { exit 1, "Cannot find any reads matching: ${reads_files}\nNB: Path needs to be enclosed in quotes!\nNB: Path requires at least one * wildcard!\nIf this is single-end data, please specify --singleEnd on the command line." }
+        .fromFilePairs( params.reads, size: params.singleEnd ? 1 : 2 )
+        .ifEmpty { exit 1, "Cannot find any reads matching: ${params.reads}\nNB: Path needs to be enclosed in quotes!\nNB: Path requires at least one * wildcard!\nIf this is single-end data, please specify --singleEnd on the command line." }
         .into { raw_reads_fastqc; raw_reads_trimgalore }
 }
 
@@ -247,7 +245,7 @@ log.info """=======================================================
 ======================================================="""
 def summary = [:]
 summary['Run Name']     = custom_runName ?: workflow.runName
-summary['Reads']        = reads_files
+summary['Reads']        = params.reads
 summary['Data Type']    = params.singleEnd ? 'Single-End' : 'Paired-End'
 summary['Genome']       = params.genome
 if( params.pico ) summary['Library Prep'] = "SMARTer Stranded Total RNA-Seq Kit - Pico Input"
