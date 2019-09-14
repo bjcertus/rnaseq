@@ -505,7 +505,7 @@ process trim_galore {
 
     input:
     set val(name), file(reads) from raw_reads_trimgalore
-    each file wherearemyfiles from ch_where_trim_galore.collect()
+    each file(wherearemyfiles) from ch_where_trim_galore.collect()
 
     output:
     file "*fq.gz" into trimmed_reads
