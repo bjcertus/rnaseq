@@ -108,7 +108,7 @@ params.hisat2_index = params.genome ? params.genomes[ params.genome ].hisat2 ?: 
 ch_mdsplot_header = Channel.fromPath("$baseDir/assets/mdsplot_header.txt")
 ch_heatmap_header = Channel.fromPath("$baseDir/assets/heatmap_header.txt")
 ch_biotypes_header = Channel.fromPath("$baseDir/assets/biotypes_header.txt")
-Channel.fromPath("$baseDir/assets/where_are_my_files.txt")
+Channel.fromPath(params.where_are_my_files)
        .into{ch_where_trim_galore; ch_where_star; ch_where_hisat2; ch_where_hisat2_sort}
 
 // Define regular variables so that they can be overwritten
