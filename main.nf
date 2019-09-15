@@ -201,7 +201,7 @@ if( workflow.profile == 'awsbatch') {
 
 // Stage config files
 ch_multiqc_config = Channel.fromPath(params.multiqc_config)
-ch_output_docs = Channel.fromPath("$baseDir/docs/output.md")
+ch_output_docs = Channel.fromPath("https://github.com/PhilPalmer/rnaseq/raw/master/docs/output.md")
 
 /*
  * Create a channel for input read files
@@ -1170,18 +1170,18 @@ workflow.onComplete {
 
     // Render the TXT template
     def engine = new groovy.text.GStringTemplateEngine()
-    def tf = new File("$baseDir/assets/email_template.txt")
+    def tf = new File("https://github.com/PhilPalmer/rnaseq/raw/master/assets/email_template.txt")
     def txt_template = engine.createTemplate(tf).make(email_fields)
     def email_txt = txt_template.toString()
 
     // Render the HTML template
-    def hf = new File("$baseDir/assets/email_template.html")
+    def hf = new File("https://github.com/PhilPalmer/rnaseq/raw/master/assets/email_template.html")
     def html_template = engine.createTemplate(hf).make(email_fields)
     def email_html = html_template.toString()
 
     // Render the sendmail template
     def smail_fields = [ email: params.email, subject: subject, email_txt: email_txt, email_html: email_html, baseDir: "$baseDir", mqcFile: mqc_report, mqcMaxSize: params.maxMultiqcEmailFileSize.toBytes() ]
-    def sf = new File("$baseDir/assets/sendmail_template.txt")
+    def sf = new File("https://github.com/PhilPalmer/rnaseq/raw/master/assets/sendmail_template.txt")
     def sendmail_template = engine.createTemplate(sf).make(smail_fields)
     def sendmail_html = sendmail_template.toString()
 
