@@ -1,7 +1,4 @@
-FROM nfcore/base
-LABEL authors="phil.ewels@scilifelab.se" \
-      description="Docker image containing all requirements for the nfcore/rnaseq pipeline"
+FROM nfcore/rnaseq:1.3
 
-COPY environment.yml /
-RUN conda env create -f /environment.yml && conda clean -a
-ENV PATH /opt/conda/envs/nf-core-rnaseq-1.3/bin:$PATH
+COPY bin /usr/local/bin/
+RUN chmod -R +x /usr/local/bin/
